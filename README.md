@@ -1,1 +1,1 @@
-# AdvancedDjangoGB
+# Advanced Django GB
