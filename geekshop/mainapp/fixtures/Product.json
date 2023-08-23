@@ -1,0 +1,75 @@
+[
+  {"model": "mainapp.product",
+    "pk": 1,
+    "fields": {
+      "category": 2,
+      "name": "Валенсия",
+      "image": "products_images/product-1.jpg",
+      "short_desc": "Утонченный дизайн",
+      "description": "Удобный и практичный",
+      "price": "1800.56",
+      "quantity": 198
+    }
+  },
+  {"model": "mainapp.product",
+    "pk": 2,
+    "fields": {
+      "category": 2,
+      "name": "Скандинавия",
+      "image": "products_images/product-21.jpg",
+      "short_desc": "Изящный дизайн",
+      "description": "Стул на все времени",
+      "price": "1900.50",
+      "quantity": 100
+    }
+  },
+   {"model": "mainapp.product",
+    "pk": 3,
+    "fields": {
+      "category": 2,
+      "name": "Гладиатор",
+      "image": "products_images/product-4.jpg",
+      "short_desc": "Лучший выбор ценителей",
+      "description": "",
+      "price": "3200.56",
+      "quantity": 198
+    }
+  },
+   {"model": "mainapp.product",
+    "pk": 4,
+    "fields": {
+      "category": 3,
+      "name": "Отдохони",
+      "image": "products_images/product-1.jpg",
+      "short_desc": "Утонченный дизайн",
+      "description": "Удобный и практичный",
+      "price": "4000.56",
+      "quantity": 77
+    }
+  },
+  {"model": "mainapp.product",
+    "pk": 5,
+    "fields": {
+      "category": 3,
+      "name": "Зима",
+      "image": "products_images/product-21.jpg",
+      "short_desc": "Изящный дизайн",
+      "description": "Кресло на все временя",
+      "price": "3500.50",
+      "quantity": 100
+    }
+  },
+   {"model": "mainapp.product",
+    "pk": 6,
+    "fields": {
+      "category": 3,
+      "name": "Валентина",
+      "image": "products_images/product-4.jpg",
+      "short_desc": "лучший выбор",
+      "description": "Удобство и комфорт каждый день",
+      "price": "6200.50",
+      "quantity": 50
+    }
+  }
+  ]
+

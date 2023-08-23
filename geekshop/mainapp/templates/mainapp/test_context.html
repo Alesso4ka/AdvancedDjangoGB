@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title|title }}</title>
+</head>
+<body>
+<h1>{{ header }}</h1>
+<p>{{ username }}</p>
+<!-- Полностью вывести содержимое переменной products -->
+<p>{{ products }}</p>
+
+<!-- Пример вывода даты -->
+<p>{% now "d/m/Y" %}</p>
+
+<!-- Цикл for - много разного выводится для примера -->
+{% for product in products %}
+    <p>{% now "d/m/Y"%}</p>
+    <p> Дата: {% now "Y" %} Словарь: {{product}} {{ product.name }} - {{ product.price }}</p>
+{% endfor %}
+
+{% for product in products %}
+    <p>{{ product.name }} - {{ product.price }}</p>
+{% endfor %}
+
+
+</body>
+</html>

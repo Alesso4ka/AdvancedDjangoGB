@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+{% load my_tags %}
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Админка на Ajax</title>
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+
+</head>
+<body>
+    <div class="select_item">
+        <a href="#"> На главную </a>
+        <a href="{% url 'adminapp:users' %}">Показать пользователей</a>
+        <a href="{% url 'adminapp:categories' %}">Показать категории</a>
+    </div>
+    <div class = "content">
+        Выберите нужный раздел меню
+    </div>
+    <script src="{% static 'js/admin_scripts.js' %}"></script>
+</body>
+</html>

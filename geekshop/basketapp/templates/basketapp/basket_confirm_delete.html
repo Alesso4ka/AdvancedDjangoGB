@@ -1,0 +1,16 @@
+{% extends 'ordersapp/base.html' %}
+{% load static %}
+
+{% block content %}
+   <div class="category_delete">
+
+       <div class="h1">Уверены, что хотите удалить?</div>
+       <form action="{% url 'basketapp:remove' object.pk %}" method="post">
+           {% csrf_token %}
+           <input class="btn btn-danger" type="submit" value="удалить">
+       </form>
+       <button class="btn btn-success">
+           <a href="{% url 'basketapp:view' %}">отмена</a>
+       </button>
+   </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<div class="container">
+        <!-- Вывод информации о пользователе в верхней строке -->
+<div class="info">
+    <div align="left">
+        <i class="fa fa-map-marker" aria-hidden="true"></i><b> {{ user_info.city }}<b>
+    </div>
+
+    <div align="right" class = "user_status">
+        <i class="fa fa-user" aria-hidden="true"></i>
+        <ul class="menu_status">
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'auth:edit' %}">{{ user.username|default:'Пользователь' }}</a>
+                </li>
+            {% endif %}
+            {% if user.is_superuser %}
+                <li>
+                <a href="{% url 'admin:users' %}">Админка</a>
+                </li>
+            {% endif %}
+            {% if user.is_superuser %}
+<!--                <li>-->
+<!--                <a href="{% url 'admin:admin_ajax' %}">админка ajax</a>-->
+<!--                </li>-->
+            {% endif %}
+
+            <li>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'auth:logout' %}">выйти</a>
+                {% else %}
+                    <a href="{% url 'auth:login' %}">войти</a>
+
+                    <a href="{% url 'auth:register' %}" class="btn btn-primary" style="color: aliceblue"> регистрация</a>
+                {% endif %}
+            </li>
+
+            <li>
+                <a href="{% url 'basket:view' %}" class="">
+                {% if basket %}
+                    Корзина:
+                    {{ basket.0.total_cost|floatformat:0 }} руб
+                    ({{ basket.0.total_quantity }} шт)
+                {% endif %}
+            </a>
+            </li>
+        </ul>
+    </div>
+</div>

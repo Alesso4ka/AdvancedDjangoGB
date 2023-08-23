@@ -1,0 +1,9 @@
+.idea/
+/wow_re.py
+/.venv/
+/django2/
+/staticfiles/
+test_db.json
+wow.py
+wow_json.py
+/static/img/

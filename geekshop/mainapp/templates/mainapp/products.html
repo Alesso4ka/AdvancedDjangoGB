@@ -1,0 +1,91 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% load static %}
+
+
+{% block menu %}
+	<div class="container">
+		<div class="hero-white">
+			<div class="header clearfix">
+				<a href="index.html" class="logo"></a>
+					{% include 'includes/main_menu.html' %}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+{% block content %}
+
+		<div class="details">
+			<div class="links clearfix">
+				{% include 'includes/inc_categories_menu.html' %}
+			</div>
+
+			<div class="details-products">
+				<div class="details-slider">
+					<div class="slider-product">
+						<img src="{{ hot_product.image|media_folder_products}}" style="object-fit: contain; width: 570px;
+height: 570px;">
+					</div>
+					<div class="slider-control">
+						<div class="block">
+							<a href="#"><img src="/media/{{ hot_product.image }}" class="img_control" alt="">
+								<div class="text"></div>
+							</a>
+						</div>
+						<div class="block">
+							<a href="#"><img src="/media/{{ hot_product.image }}" class="img_control" alt="">
+								<div class="text"></div>
+							</a>
+						</div>
+						<div class="block">
+							<a href="#"><img src="/media/{{ hot_product.image }}" class="img_control" alt="">
+								<div class="text"></div>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="description">
+					<h3 class="big-bold">{{ hot_product.name }}</h3>
+					<h3 class="red">горячее предложение</h3>
+					<p class="price">{{ hot_product.price|price_formatting }}<span> руб.</span></p>
+					<a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
+						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
+					</a>
+					<div class="description-text">
+						 {{ hot_product.description }}
+					</div>
+				</div>
+			</div>
+
+			<div class="related">
+				<div class="title clearfix">
+						<h2>Похожие продукты</h2>
+						<a class="explore" href="#">показать все <img src="{% static 'img/'%}arrow.png" alt=""></a>
+				</div>
+				<div class="related-products clearfix">
+						{% for product in same_products %}
+							<!-- добавить ссылку для перехода -->
+							<div class="block">
+								<a href="{% url 'products:product' product.pk %}"><img src="{{ product.image|media_folder_products }}" class="img_products_in_all" alt="">
+									<div class="text">
+										<img src="{% static 'img/'%}icon-hover.png" alt="img">
+										<h4>{{ product.name }}</h4>
+													<p>{{ product.description }}</p>
+													<p>Цена: {{ product.price|price_formatting }} руб.</p>
+												</div>
+											</a>
+										</div>
+									{% endfor %}
+							</div>
+						</div>
+
+			</div>
+
+		<div class="clr"></div>
+
+	</div>	
+{% endblock %}

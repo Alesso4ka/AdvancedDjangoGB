@@ -1,0 +1,66 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
+  <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Аватар</th>
+                <th>Права</th>
+                <th>Логин</th>
+                <th>Имя и фамилия</th>
+                <th>email</th>
+                <th>Последний вход</th>
+                <th>Действия</th>
+                <th>Удалить</th>
+            </tr>
+            </thead>
+            <tbody>
+              {% for object in object_list %}
+              <tr class="{% if not object.is_active %}table-warning{% endif %}">
+                  <th scope="row">{{ forloop.counter }}</th>
+                  <td>
+                      <img src="{{ object.avatar|media_folder_users }}" alt="{{ object.username }}">
+                  </td>
+                  <td>
+                      {% if object.is_superuser %}
+                          администратор
+                      {% else %}
+                          пользователь
+                      {% endif %}
+                  </td>
+                  <td>{{ object.username }}</td>
+                  <td>{{ object.first_name }} {{ object.last_name }}</td>
+                  <td>{{ object.email }}</td>
+                  <td>{{ object.last_login }}</td>
+                  <td>
+                          <a href="{% url 'admin:user_update' object.pk %}" class="btn btn-primary">
+                            редактировать
+                          </a>
+                  </td>
+                  <td>
+                      {% if object.is_active %}
+                            <a href="{% url 'admin:user_delete' object.pk %}" class="btn btn-warning">
+                                удалить
+                            </a>
+                      {% else %}
+                            <a href="{% url 'admin:user_delete' object.pk %}" class="btn btn-danger">
+                                удалить навсегда
+                            </a>
+                      {% endif %}
+                  </td>
+              <tr>
+              {% endfor %}
+            </tbody>
+            </table>
+
+  <div class="users_list">
+    <button class="new_user">
+      <a href="{% url 'admin:user_create' %}" class="btn btn-primary">
+        + новый пользователь
+      </a>
+    </button>
+
+{% endblock %}

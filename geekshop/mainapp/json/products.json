@@ -1,0 +1,59 @@
+[
+
+        {
+          "category": "Стулья",
+          "name":"Не оторваться.",
+          "image":"product-2.jpg",
+          "short_desc": "",
+          "description": "",
+          "price": 0,
+          "quantity": 0
+        },
+        {
+          "category": "Стулья",
+          "name":"Не оторваться.",
+          "image":"product-3.jpg",
+          "short_desc": "",
+          "description": "",
+          "price": 0,
+          "quantity": 0
+        },
+        {
+          "category": "Стулья",
+          "name":"Не оторваться.",
+          "image":"product-4.jpg",
+          "short_desc": "",
+          "description": "",
+          "price": 0,
+          "quantity":0
+        },
+
+        {
+          "category": "Стулья",
+          "name":"Не оторваться.",
+          "image":"product-11.jpg",
+          "short_desc": "",
+          "description": "",
+          "price": 0,
+          "quantity": 0
+        },
+        {
+         "category": "Стулья",
+          "name":"Не оторваться.",
+          "image":"product-21.jpg",
+          "short_desc": "",
+          "description": "",
+          "price": 0,
+          "quantity": 0
+        },
+        {
+          "category": "Стулья",
+          "name":"Не оторваться.",
+          "image":"product-1.jpg",
+          "short_desc": "",
+          "description": "",
+          "price": 0,
+          "quantity": 0
+        }
+]
+

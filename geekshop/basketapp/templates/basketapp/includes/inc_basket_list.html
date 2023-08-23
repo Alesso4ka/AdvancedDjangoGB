@@ -1,0 +1,75 @@
+{% load my_tags %}
+
+{% if basket_items %}
+    {% with basket_info=basket_items.0.basket_info %}
+        <div class="basket_summary">
+            <h2>В корзине {{ basket_info.total_quantity }} товаров общей стоимостью
+                {{ basket_info.total_cost|price_formatting  }} руб.</h2>
+        </div>
+    {% endwith %}
+{% endif %}
+
+<table class="table">
+  <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Вид</th>
+        <th scope="col">Категория</th>
+        <th scope="col">Наименование товара</th>
+        <th scope="col">Стоимость руб / ед.</th>
+        <th scope="col">Количество в заказке</th>
+        <th scope="col">Итого, руб.</th>
+        <th scope="col">Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for item in basket_items %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td><img src="/media/{{ item.product.image }}"
+                         alt="{{ item.product.short_desc }}" style="object-fit: contain; width: 150px; height: 150px;"></td>
+                <td>{{ item.product.category.name }}</td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.price|price_formatting }}</td>
+                <td><input class = "" type="number" name="{{ item.pk }}" min="0"
+                                         value="{{ item.quantity }}" onkeydown="return false"></td>
+                <td>{{ item.product_cost|price_formatting }}</td>
+                <td><button class="btn btn-round">
+                        <a href="{% url 'basket:remove' item.pk %}" class="btn btn-primary">
+                            удалить
+                        </a>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+<!-- Код из методички
+<!--    {% for item in basket_items %}-->
+<!--        <div class="basket_record">-->
+<!--            <img src="/media/{{ item.product.image }}"-->
+<!--                 alt="{{ item.product.short_desc }}">-->
+<!--            <span class="category_name">{{ item.product.category.name }}</span>-->
+<!--            <span class="product_name">{{ item.product.name }}</span>-->
+<!--            <span class="product_price">{{ item.product.price }}&nbspруб</span>-->
+<!--            <input type="number" name="{{ item.pk }}" min="0"-->
+<!--                                 value="{{ item.quantity }}">-->
+<!--            <span class="product_cost">{{ item.cost }}&nbspруб</span>-->
+<!--            <button class="btn btn-round">-->
+<!--                <a href="{% url 'basket:remove' item.pk %}" class="">-->
+<!--                    удалить-->
+<!--                </a>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    {% endfor %}-->
+
+<!--{% if basket_items %}-->
+<!--    <div class="basket_summary">-->
+<!--        В корзине {{ basket_items.0.total_quantity }} товаров общей стоимостью-->
+<!--        {{ basket_items.0.total_cost }} руб-->
+<!--    </div>-->
+<!--{% endif %}-->
+

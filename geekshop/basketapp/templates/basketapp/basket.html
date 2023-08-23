@@ -1,0 +1,17 @@
+{% extends 'basketapp/base.html' %}
+{% load static %}
+{% load my_tags %}
+
+
+{% block content %}
+    <div class="basket_list">
+        {% include 'basketapp/includes/inc_basket_list.html' %}
+    </div>
+
+        <a href="{% url 'index' %}" class="btn btn-primary">
+            на главную
+        </a>
+        <a href="{% url 'index' %}" class="btn btn-primary">
+            Вернуться к покупкам
+        </a>
+{% endblock %}

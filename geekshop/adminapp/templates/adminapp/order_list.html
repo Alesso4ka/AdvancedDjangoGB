@@ -1,0 +1,65 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+   <table class="table orders_list">
+       <thead>
+         <tr>
+             <th>ID</th>
+             <th>Клиент</tр>
+             <th>Создан</th>
+             <th>Обновлен</th>
+             <th>Статус</th>
+             <th>Изменить статус</th>
+         </tr>
+       </thead>
+       <tbody>
+           {% for item in object_list %}
+               {% if item.is_active %}
+               <tr>
+                   <td class="td1 orders_list">{{ item.pk }}</td>
+                   <td>
+                       <a href="{% url 'adminapp:user_info' item.user.id %}" target="_blank">
+                           {{ item.user.first_name }} {{ item.user.last_name }} ({{ item.user.username }})
+                       </a>
+                   </td>
+                   <td>{{ item.created|date:"Y-m-d H:i:s" }}</td>
+                   <td>{{ item.updated|date:"Y-m-d H:i:s" }}</td>
+                   <td>{{ item.get_status_display }}</td>
+                   <td><a href="{% url 'adminapp:order_status' item.pk %}" class="btn btn-primary">Изменить</a></td>
+                   <td>
+                       <a href="{% url 'adminapp:order_read' item.pk %}" class="btn btn-primary">
+                           посмотреть
+                       </a>
+                   </td>
+                   <td>
+                       {% if item.status == 'FM' %}
+                         <a href="{% url 'ordersapp:order_update_admin' item.pk %}" class="btn btn-primary">
+                           редактировать
+                         </a>
+                       {% endif %}
+                   </td>
+                   <td>
+                       {% if item.status == 'FM' %}
+                         <a href="{% url 'ordersapp:order_delete_admin' item.pk %}" class="btn btn-primary">
+                             удалить
+                         </a>
+                       {% endif %}
+                   </td>
+               </tr>
+               {% endif %}
+           {% endfor %}
+       </tbody>
+   </table>
+   <button class="btn btn-default btn-round">
+       <a href="{% url 'adminapp:users' %}">
+           Вернуться в меню администратора
+       </a>
+   </button>
+<!--   <button class="btn btn-default btn-round">-->
+<!--&lt;!&ndash;       <a href="{% url 'ordersapp:order_create' %}">&ndash;&gt;-->
+<!--           новый-->
+<!--&lt;!&ndash;       </a>&ndash;&gt;-->
+<!--   </button>-->
+{% endblock %}

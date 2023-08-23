@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+        {% block title %}
+            {{ title|title }}
+        {% endblock %}
+    </title>
+
+    <!-- Блок для скриптов -->
+
+</head>
+
+    <body>
+          <div class="admin_container">
+              <br> ID клиента: {{ userinfo.id }}
+              <br> Имя пользователя: {{ userinfo.username }}
+              <br> Имя: {{ userinfo.first_name }}
+              <br> Фамилия: {{ userinfo.last_name }}
+          </div>
+    </body>
+
+</html>
+
+

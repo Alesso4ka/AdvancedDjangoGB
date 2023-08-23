@@ -1,0 +1,10 @@
+{% extends 'adminapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input class="form-control" type="submit" value="сохранить">
+    </form>
+{% endblock %}

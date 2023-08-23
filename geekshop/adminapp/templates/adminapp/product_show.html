@@ -1,0 +1,37 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+{% load my_tags %}
+
+
+{% block content %}
+    <div class="product_record">
+        <h2>Категория товаров: {{ object.category.name }}</h2>
+        <!-- <img src="/media/{{object.image|default:'products_images/default.jpg'}}"
+             alt="{{ object.name }}">  -->
+        <img src="{{ object.image|media_folder_products }}" class="img_product_show"
+             alt="{{ object.name }}">
+        <div class="product_name">
+            <h1>{{ object.name|title }}</h1>
+        </div>
+        <div class="summary">
+            <b>Цена</b>
+            <p><h2>{{ object.price|price_formatting }} руб </h2></p>
+            <b>Количество на складе</b>
+            <p><h2>{{ object.quantity }} ед.</h2></p>
+        </div>
+        <div class="product_desc">
+            {{ object.short_desc }}
+        </div>
+         <div class="product_desc">
+            {{ object.description}}
+        </div>
+    </div>
+    <br>
+
+       <button class="btn btn-round form-control last">
+            <a href="{% url 'adminapp:products' object.category_id %}">
+              К списку продуктов в категории "{{ object.category.name}}".
+            </a>
+        </button>
+
+{% endblock %}

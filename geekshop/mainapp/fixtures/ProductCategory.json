@@ -1,0 +1,14 @@
+[
+  {"model": "mainapp.productcategory",
+    "pk": 2,
+    "fields": {"name": "Стулья", "description": "Каталог стульев"}},
+  {"model": "mainapp.productcategory",
+    "pk": 3,
+    "fields": {"name": "Кресла", "description": "Каталок кресел"}},
+  {"model": "mainapp.productcategory",
+    "pk": 4,
+    "fields": {"name": "Прочая", "description": "Каталог прочей мебели"}},
+  {"model": "mainapp.productcategory",
+    "pk": 5,
+    "fields": {"name": "Столы", "description": "Каталог столов"}}
+]

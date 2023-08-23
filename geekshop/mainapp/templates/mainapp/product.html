@@ -1,0 +1,66 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% load my_tags %}
+
+{% block menu %}
+	<div class="container">
+		<div class="hero-white">
+			<div class="header clearfix">
+				<a href="index.html" class="logo"></a>
+					{% include 'includes/main_menu.html' %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+<div class="details">
+			<div class="links clearfix">
+				{% include 'includes/inc_categories_menu.html' %}
+			</div>
+
+    <div class="details-products">
+      <div class="details-slider">
+        <div class="slider-product">
+          <img src="/media/{{ product.image }}" style="object-fit: contain; width: 570px; height: 570px;" alt="{{ product.short_desc }}">
+        </div>
+        <div class="slider-control">
+          <div class="block">
+            <a href="#">
+              <img src="/media/{{ product.image }}" class="img_control" alt="вариант 1">
+            </a>
+          </div>
+          <div class="block">
+            <a href="#">
+              <img src="/media/{{ product.image }}" class="img_control" alt="вариант 2">
+            </a>
+          </div>
+          <div class="block">
+            <a href="#">
+              <img src="/media/{{ product.image }}" class="img_control" alt="вариант 3">
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="description">
+        <h3 class="big-bold">{{ product.name }}</h3>
+        <br>
+        <p class="price"> {{ product.price|price_formatting }} <span>руб</span></p>
+        <a href="{% url 'basket:add' product.pk %}" class="red-button">
+          заказать
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </a>
+        <div class="description-text">
+          {{ product.description }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="clr"></div>
+
+{% endblock %}
+

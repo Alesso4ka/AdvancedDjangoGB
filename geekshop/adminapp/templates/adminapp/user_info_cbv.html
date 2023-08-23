@@ -1,0 +1,32 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>
+        Покупатель: {{ object.username }}
+    </title>
+</head>
+
+    <body>
+          <div class="admin_container">
+              <br> ID клиента: {{ object.id }}
+              <br> Имя пользователя: {{ object.username }}
+              <br> Имя: {{ object.first_name }}
+              <br> Фамилия: {{ object.last_name }}
+          </div>
+
+      <button class="btn btn-default btn-round">
+       <a href="{% url 'adminapp:orders' %}">
+           Вернуться к заказам
+       </a>
+   </button>
+    </body>
+
+</html>
+
+

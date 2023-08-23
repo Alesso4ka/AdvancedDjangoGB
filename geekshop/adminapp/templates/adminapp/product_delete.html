@@ -1,0 +1,22 @@
+{% extends 'adminapp/base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class = 'confirmation'>
+
+        <h2>{{ msg }}</h2>
+        <br>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <form action="{% url 'admin:product_delete' object.pk %}" method="post">
+                {% csrf_token %}
+                <input class="btn btn-primary me-md-2 mstyle" type="submit" value="Удалить">
+            </form>
+
+                    <a class="btn btn-primary mstyle" href="{% url 'admin:products' object.category.id %}">
+                        Отмена
+                    </a>
+
+        </div>
+    </div>
+{% endblock %}

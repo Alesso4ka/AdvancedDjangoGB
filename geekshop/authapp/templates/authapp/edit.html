@@ -1,0 +1,44 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+        <div class="edit_reg">
+            <div class="h2 text-center head" style="margin-bottom: 30px;">Фотография профиля</div>
+            <div class="user_avatar row">
+                <div class="col-md-8 mx-auto">
+                     <img class="img-fluid" src="/media/{{ user.avatar }}" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="edit_reg">
+           <div class="h2 text-center head" style="margin-bottom: 30px;">Редактирование данных пользователя </div>
+
+            <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form.as_p }}
+                {{ profile_form.as_p }}
+                <input class="form-control btn btn-primary" type="submit" value="сохранить">
+            </form>
+           <button class="btn btn-round form-control last">
+            <a href="{% url 'index' %}" class="">
+                на главную
+            </a>
+            </button>
+
+        </div>
+  </div>
+
+
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="h2 text-center head">
+    <h1>Пользователя: <span class="badge badge-secondary">{{ order_info.user.username }}</span></h1>
+</div>
+
+
+ <div class="col-md-8 offset-md-2">
+    <form class="form-horizontal" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ status_form.as_p }}
+        <input class="form-control" type="submit" value="сохранить">
+    </form>
+    <button class="btn btn-round form-control last">
+        <a href="{% url 'adminapp:orders' %}">
+          К списку заказов
+        </a>
+    </button>
+ </div>
+{% endblock %}

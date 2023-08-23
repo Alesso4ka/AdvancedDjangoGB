@@ -1,0 +1,65 @@
+<ul class="menu">
+    {% for section in main_menu%}
+        <li>
+                            <a href="{% url section.menu_section %}"
+                               class="{% if request.resolver_match.view_name == section.menu_section %} active {% endif %}">
+                                {{ section.name }}
+                            </a>
+        </li>
+    {% endfor %}
+
+      <!-- Вход и выход в меню -->
+    {% if user.is_authenticated %}
+            <li>
+               <div class="dropdown">
+                   <a class="dropdown-toggle" href="" data-toggle="dropdown">
+                       {{ user.first_name|default:'Пользователь' }}
+                       <span class="caret"></span>
+                   </a>
+                   <ul class="dropdown-menu">
+                       <li>
+                           <a href="{% url 'auth:edit' %}">
+                               профиль
+                           </a>
+                       </li>
+                       <li>
+                           <a href="{% url 'ordersapp:orders_list' %}">
+                               заказы
+                           </a>
+                       </li>
+                   </ul>
+               </div>
+           </li>
+
+    {% endif %}
+
+<!--    {% if user.is_superuser %}-->
+<!--        <li>-->
+<!--            <a href="{% url 'admin:users' %}">админка</a>-->
+<!--        </li>-->
+<!--    {% endif %}-->
+<!--    {% if user.is_superuser %}-->
+<!--        <li>-->
+<!--            <a href="{% url 'admin:admin_ajax' %}">админка ajax</a>-->
+<!--        </li>-->
+<!--    {% endif %}-->
+
+<!--        <li>-->
+<!--            {% if user.is_authenticated %}-->
+<!--              <a href="{% url 'auth:logout' %}">выйти</a>-->
+<!--            {% else %}-->
+<!--              <a href="{% url 'auth:login' %}">войти</a>-->
+<!--            {% endif %}-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="{% url 'basket:view' %}" class="btn btn-light">-->
+<!--                {% if basket %}-->
+<!--                В корзине:-->
+<!--                  {{ basket.0.total_cost|floatformat:0 }} руб-->
+<!--                  ({{ basket.0.total_quantity }} шт)-->
+<!--                {% endif %}-->
+<!--            </a>-->
+<!--        </li>-->
+</ul>
+
+
